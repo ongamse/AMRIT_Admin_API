@@ -31,7 +31,7 @@ jobs:
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
     - name: NextGen Static Analysis
-      run: ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app FHIR_API --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --tag app.group=AMRIT --vcs-prefix-correction "*=src/main/java/" --java target/adminapi-v1.0.war
+      run: ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app Admin_API --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --tag app.group=AMRIT --vcs-prefix-correction "*=src/main/java/" --java target/adminapi-v1.0.war
       #run: ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app Qwiet-java-GH --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --javasrc .
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
